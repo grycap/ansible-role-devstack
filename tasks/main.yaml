@@ -1,0 +1,15 @@
+---
+- name: Clone DevStack repository
+  git:
+    repo: "https://git.openstack.org/openstack-dev/devstack"
+    dest: "{{ ansible_env.HOME }}/devstack"
+    version: "{{ monasca_git_branch }}"
+    force: "yes"
+
+- name: Drop local.conf
+  copy:
+    src: "local.conf"
+    dest: "{{ ansible_env.HOME }}/devstack/local.conf"
+
+- name: Run stack.sh
+  command: "{{ ansible_env.HOME }}/devstack/stack.sh"
