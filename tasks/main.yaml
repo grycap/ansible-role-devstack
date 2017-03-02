@@ -5,7 +5,7 @@
     state: "present"
     system: "yes"
 
-- name: Create ssh keys for defined user
+- name: Create system user
   user:
     name: "{{devstack_user}}"
     generate_ssh_key: "yes"
@@ -26,8 +26,8 @@
 - name: Drop local.conf
   become: true
   become_user: devstack
-  copy:
-    src: "local.conf"
+  template:
+    src: "local.conf.j2"
     dest: "{{ devstack_user_home }}/devstack-repo/local.conf"
 
 - name: Run stack.sh
