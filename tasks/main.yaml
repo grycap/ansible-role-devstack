@@ -3,7 +3,7 @@
   git:
     repo: "https://git.openstack.org/openstack-dev/devstack"
     dest: "{{ ansible_env.HOME }}/devstack"
-    version: "{{ monasca_git_branch }}"
+    version: "{{ devstack_git_branch }}"
     force: "yes"
 
 - name: Drop local.conf
